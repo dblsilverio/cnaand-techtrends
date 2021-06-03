@@ -1,0 +1,39 @@
+namespace:
+  name: sandbox
+
+service:
+  port: 4111
+  targetPort: 3111
+  protocol: TCP
+  type: ClusterIP
+
+image:
+  repository: diogosilverio/techtrends
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+resources:
+  requests:
+    CPU: 250m
+    memory: 64Mi
+  limits:
+    CPU: 500m
+    memory: 128Mi
+
+containerPort: 3111
+
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 3111
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+readinessProbe:
+  httpGet:
+    path: /healthz
+    port: 3111
+  initialDelaySeconds: 5
+  periodSeconds: 5

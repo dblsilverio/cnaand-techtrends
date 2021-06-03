@@ -1,0 +1,9 @@
+apiVersion: v1
+name: techtrends
+description: Cloud Native Application Architecture - TechTrends Project
+keywords:
+- techtrends
+version: 1.0.0
+maintainers:
+- name: dblsilverio
+  email: dblsilverio@mail.io
