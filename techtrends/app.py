@@ -87,7 +87,7 @@ def create():
             connection.commit()
             connection.close()
 
-            logging.info(f'Article "{title}" created"')
+            logging.info('Article "{}" created'.format(title))
 
             return redirect(url_for('index'))
 
