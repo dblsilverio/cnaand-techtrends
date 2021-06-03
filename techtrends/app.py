@@ -37,6 +37,29 @@ def get_article_count(metrics_obj):
     metrics_obj['post_count'] = article_count[0]
 
 
+def valid_db_connection():
+    """
+    Checks if connecting to database is successful.
+    """
+    try:
+        connection = get_db_connection()
+        connection.close()
+    except:
+        raise Exception("Database connection failure")
+
+
+def post_table_exists():
+    """
+    Checks if POST table exists.
+    """
+    try:
+        connection = get_db_connection()
+        connection.execute('SELECT 1 FROM posts').fetchone()
+        connection.close()
+    except:
+        raise Exception("Table 'posts' does not exist")
+
+
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
@@ -96,9 +119,21 @@ def create():
 
 @app.route('/healthz', methods=['GET'])
 def healthz():
+
+    response_body = {'result': 'OK - healthy'}
+    status_code = 200
+
+    try:
+        valid_db_connection()
+        post_table_exists()
+    except Exception as exc:
+        response_body['result'] = 'ERROR - unhealthy'
+        response_body['details'] = str(exc)
+        status_code = 500
+
     response = app.response_class(
-        response=json.dumps({'result': 'OK - healthy'}),
-        status=200,
+        response=json.dumps(response_body),
+        status=status_code,
         mimetype='application/json')
 
     return response
