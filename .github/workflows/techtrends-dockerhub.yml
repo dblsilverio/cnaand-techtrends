@@ -17,4 +17,6 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: diogosilverio/techtrends:latest
+          tags: |
+            diogosilverio/techtrends:latest
+            diogosilverio/techtrends:${{ github.sha }}
