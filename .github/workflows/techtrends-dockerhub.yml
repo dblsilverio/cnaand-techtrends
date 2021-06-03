@@ -19,4 +19,4 @@ jobs:
           push: true
           tags: |
             diogosilverio/techtrends:latest
-            diogosilverio/techtrends:${{ github.sha }}
+            diogosilverio/techtrends:${{ github.sha::12 }}
