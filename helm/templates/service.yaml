@@ -7,7 +7,7 @@ metadata:
   namespace: {{ .Values.namespace.name }}
 spec:
   ports:
-  - name: Web Port
+  - name: web-port
     port: {{ .Values.service.port }}
     protocol: {{ .Values.service.protocol }}
     targetPort: {{ .Values.service.targetPort }}
