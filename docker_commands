@@ -1,11 +1,39 @@
 ## Docker commands used to build the application 
-# TODO: insert the docker build command
+docker build -t diogosilverio/techtrends .
 
 ## Docker commands used to run the application
-# TODO: insert the docker run command
+docker run -d --name techtrends -p 7111:3111 diogosilverio/techtrends
 
 ## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+docker logs -f techtrends
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+$ docker logs -f techtrends 
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:24:26] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:24:26] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:24:27] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:root:"About Us" page was retrieved
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:25:14] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:25:16] "GET / HTTP/1.1" 200 -
+INFO:root:Article "2020 CNCF Annual Report" retrieved!
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:25:17] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:25:19] "GET / HTTP/1.1" 200 -
+INFO:root:Article "Kubernetes v1.20 Release Notes" retrieved!
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:25:20] "GET /3 HTTP/1.1" 200 -
+ERROR:root:Article with id 31 does not exists
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:25:24] "GET /31 HTTP/1.1" 404 -
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:25:25] "GET / HTTP/1.1" 200 -
+INFO:root:Article "Kubernetes Certification" retrieved!
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:25:27] "GET /6 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:25:29] "GET /create HTTP/1.1" 200 -
+INFO:root:Article "Kick-Off Your Cloud Native Application Architecture Career With the Launch of Our Latest Nanodegree Program" created
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:26:23] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:26:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:27:40] "GET /metrics HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [03/Jun/2021 17:27:47] "GET /healthz HTTP/1.1" 200 -
